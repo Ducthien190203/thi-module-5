@@ -1,13 +1,17 @@
-Spotify React Vite Practice
-===========================
+# Spotify React Vite Practice
 
-Quick run:
+Mô phỏng kho nhạc Spotify với **React**, **Vite** và **json-server**.
 
-1. Install dependencies:
-   npm install
+---
 
-2. Start both servers:
-   npm run start
+## 🚀 Quick Start
 
-- React app: http://localhost:5173
-- json-server API: http://localhost:3001/songs
+```bash
+# 1. Cài dependencies
+npm install
+
+# 2. Chạy json-server
+npx json-server --watch db.json --port 3001
+
+# 3. Chạy React app
+npm start
