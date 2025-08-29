@@ -1,0 +1,58 @@
+{
+  "songs": [
+    {
+      "id": 1,
+      "name": "Nắng ấm xa dần",
+      "singer": "Sơn Tùng M-TP",
+      "composer": "Sơn Tùng M-TP",
+      "time": "03:05",
+      "likes": 0,
+      "status": "Công khai"
+    },
+    {
+      "id": 2,
+      "name": "Em của ngày hôm qua",
+      "singer": "Sơn Tùng M-TP",
+      "composer": "Sơn Tùng M-TP",
+      "time": "03:45",
+      "likes": 0,
+      "status": "Công khai"
+    },
+    {
+      "id": 3,
+      "name": "Chúng ta không thuộc về nhau",
+      "singer": "Sơn Tùng M-TP",
+      "composer": "Sơn Tùng M-TP",
+      "time": "03:52",
+      "likes": 0,
+      "status": "Công khai"
+    },
+    {
+      "name": "Em là",
+      "singer": "Mono",
+      "composer": "Thiện",
+      "time": "4:30",
+      "likes": 0,
+      "status": "Công khai",
+      "id": 4
+    },
+    {
+      "name": "Sóng Gió",
+      "singer": "Jack",
+      "composer": "Thiện",
+      "time": "07:00",
+      "likes": 0,
+      "status": "Công khai",
+      "id": 5
+    },
+    {
+      "name": "4Thien",
+      "singer": "Thiện",
+      "composer": "Minh",
+      "time": "12:59",
+      "likes": 0,
+      "status": "Công khai",
+      "id": 6
+    }
+  ]
+}
