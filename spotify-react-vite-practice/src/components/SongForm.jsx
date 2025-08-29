@@ -14,7 +14,6 @@ export default function SongForm({ onAdd }) {
 
   const setField = (field, value) => {
     setForm({ ...form, [field]: value });
-    // Clear error when user starts typing
     if (errors[field]) {
       setErrors({ ...errors, [field]: null });
     }
@@ -22,38 +21,33 @@ export default function SongForm({ onAdd }) {
 
   const validate = () => {
     const newErrors = {};
+    const titleRegex = /^[a-zA-Z0-9àáâãèéêìíòóôõùúăđĩũơưăạảấầẩẫậắằẳẵặẹẻẽềềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳýỵỷỹ ,.!?s-]+$/i;
+    const singerComposerRegex = /^[A-Za-zÀ-ỹ0-9\s.-]{1,30}$/;
+    const timeRegex = /^([0-1]\d|2[0-3]):[0-5]\d$/;
 
-    // Title validation
+    // Title validation (kept from previous step)
     if (!form.title.trim()) {
       newErrors.title = 'Tên bài hát là bắt buộc.';
     } else if (/^\d+$/.test(form.title.trim())) {
       newErrors.title = 'Tên bài hát không được chỉ chứa số.';
-    } else if (!/^[\p{L}\d ,.!?s-]+$/u.test(form.title.trim())) {
+    } else if (!titleRegex.test(form.title.trim())) {
       newErrors.title = 'Tên bài hát chứa ký tự không hợp lệ.';
     }
 
-    // Singer validation
-    if (!form.singer.trim()) {
-      newErrors.singer = 'Tên ca sĩ là bắt buộc.';
-    } else if (form.singer.length > 30) {
-      newErrors.singer = 'Tên ca sĩ không được quá 30 ký tự.';
-    } else if (!/^[\p{L}s]+$/u.test(form.singer.trim())) {
-      newErrors.singer = 'Tên ca sĩ chỉ được chứa chữ cái và khoảng trắng.';
+    // Singer validation using new regex
+    if (!singerComposerRegex.test(form.singer)) {
+        newErrors.singer = 'Yêu cầu 1-30 ký tự, bao gồm chữ, số, khoảng trắng, ., -';
     }
 
-    // Composer validation
-    if (!form.composer.trim()) {
-      newErrors.composer = 'Tên nhạc sĩ là bắt buộc.';
-    } else if (form.composer.length > 30) {
-      newErrors.composer = 'Tên nhạc sĩ không được quá 30 ký tự.';
-    } else if (!/^[\p{L}s]+$/u.test(form.composer.trim())) {
-      newErrors.composer = 'Tên nhạc sĩ chỉ được chứa chữ cái và khoảng trắng.';
+    // Composer validation using new regex
+    if (!singerComposerRegex.test(form.composer)) {
+        newErrors.composer = 'Yêu cầu 1-30 ký tự, bao gồm chữ, số, khoảng trắng, ., -';
     }
 
     // Duration validation
     if (!form.duration.trim()) {
       newErrors.duration = 'Thời gian phát là bắt buộc.';
-    } else if (!/^([0-1]\d|2[0-3]):[0-5]\d$/.test(form.duration.trim())) {
+    } else if (!timeRegex.test(form.duration.trim())) {
       newErrors.duration = 'Thời gian phải đúng định dạng hh:mm.';
     }
 
@@ -75,7 +69,6 @@ export default function SongForm({ onAdd }) {
         status: 'Lưu trữ',
       };
       onAdd(newSong);
-      // Reset form
       setForm({ title: '', singer: '', composer: '', duration: '' });
     }
   };
@@ -105,7 +98,6 @@ export default function SongForm({ onAdd }) {
             value={form.singer}
             onChange={(e) => setField('singer', e.target.value)}
             isInvalid={!!errors.singer}
-            maxLength={31} // Allow typing 31st char to show error
           />
           <Form.Control.Feedback type="invalid">
             {errors.singer}
@@ -119,7 +111,6 @@ export default function SongForm({ onAdd }) {
             value={form.composer}
             onChange={(e) => setField('composer', e.target.value)}
             isInvalid={!!errors.composer}
-            maxLength={31}
           />
           <Form.Control.Feedback type="invalid">
             {errors.composer}
