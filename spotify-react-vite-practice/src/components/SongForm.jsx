@@ -132,7 +132,7 @@ export default function SongForm({ onAdd }) {
         </Form.Group>
 
         <div className="d-grid">
-          <Button type="submit">Thêm bài hát</Button>
+          <Button type="submit">Đăng ký bài hát</Button>
         </div>
       </Form>
     </div>

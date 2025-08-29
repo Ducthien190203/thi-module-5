@@ -76,8 +76,8 @@ export default function App() {
         </Col>
       </Row>
 
-      <Row>
-        <Col md={7} className="mb-4">
+      <Row className="g-3">
+        <Col md={9} className="mb-4">
           <SongList
             songs={filteredSongs}
             loading={loading}
@@ -88,7 +88,7 @@ export default function App() {
           />
         </Col>
 
-        <Col md={5}>
+        <Col md={3}>
           <SongForm onAdd={addSong} />
         </Col>
       </Row>
